@@ -1,11 +1,8 @@
 # ----------------------------------------------------------------
-# Author:
-# Date: May 2, 2020
+# Author: Steven Murphy
+# Date: May 5, 2020
 #
-# This program creates a class registration system.  It allows
-# students to add courses, drop courses and list courses they are
-# registered for.
-# -----------------------------------------------------------------
+# This program creates a class registration system
 
 from course import Course
 from student import Student
@@ -13,10 +10,9 @@ from student import Student
 
 def main():
     # ------------------------------------------------------------
-    # This function manages the whole registration system.  It has
-    # no parameter.  It creates student list and course list.  It
-    # uses a loop to serve multiple students. Inside the loop, ask
-    # student to enter ID, and call the login function to verify
+    # This function manages the whole registration system.
+    # It creates student list and course list. A loop serves multiple students.
+    # Inside the loop, ask student to enter ID, and call the login function to verify
     # student's identity. Then let student choose to add course,
     # drop course or list courses. This function has no return value.
     # -------------------------------------------------------------
@@ -28,41 +24,40 @@ def main():
     while option == 0:
         id = input("Enter ID to log in, or 0 to quit: ")
         if id == '0':
-            print("Ended")
+            print("Login Ended")
             break
         else:
-            return_student = login(id, student_list)
-            if return_student:
+            student = login(id, student_list)
+            if student:
                 print("ID and PIN verified")
                 print()
-                option = int(input("Enter 1 to add course, 2 to drop course, 3 to list courses, 0 to exit: "))
-                while option in (1, 2, 3):
-                    if option == 1:
-                        return_student.add_course(course_list)
+                selection = 4
+                while selection != 0:
+                    selection = int(input("Enter 1 to add course, 2 to drop course, 3 to list courses, 4 to display course roster, 0 to exit: "))
+                    if selection == 1:
+                        student.add_course(course_list)
                         print()
-                        option = int(input("Enter 1 to add course, 2 to drop course, 3 to list courses, 0 to exit: "))
 
-                    elif option == 2:
-                        return_student.drop_course(course_list)
+                    elif selection == 2:
+                        student.drop_course(course_list)
                         print()
-                        choice = int(input("Enter 1 to add course, 2 to drop course, 3 to list courses, 0 to exit: "))
 
-                    elif option == 3:
-                        return_student.list_courses(course_list)
+                    elif selection == 3:
+                        student.list_courses(course_list)
                         print()
-                        choice = int(input("Enter 1 to add course, 2 to drop course, 3 to list courses, 0 to exit: "))
 
-                if option == 0:
-                    print("Session ended")
-                    print()
+                    #  elif selection == 4:
+
+                    elif selection == 0:
+                        print("Session ended")
+                        print()
+                        break
 
 
 def login(id, s_list):
     # ------------------------------------------------------------
     # This function allows a student to log in.
-    # It has two parameters: id and s_list, which is the student
-    # list. This function asks user to enter PIN. If the ID and PIN
-    # combination match the data of a Student object in s_list,
+    # if id and pin match it will
     # display message of verification and return that Student
     # object. Otherwise, display error message and return None.
     # -------------------------------------------------------------
@@ -79,9 +74,7 @@ def login(id, s_list):
 def init_lists(c_list, s_list):
     # ------------------------------------------------------------
     # This function adds elements to course_list and student_list.
-    # It makes testing and grading easier.  It has two parameters:
-    # c_list is the list of Course objects; s_list is the list of
-    # Student objects.  This function has no return value.
+    # This function has no return value.
     # -------------------------------------------------------------
 
     course1 = Course("CSC101", 3)
