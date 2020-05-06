@@ -47,6 +47,8 @@ def main():
                         print()
 
                     #  elif selection == 4:
+                    #      student.display_roster()
+                    #      print()
 
                     elif selection == 0:
                         print("Session ended")

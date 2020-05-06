@@ -34,6 +34,18 @@ class Course:
             self._roster.remove(id)
             print("Student " + id + " removed from " + self._course_code)
 
+    #  display_roster method sorts and displays the ID of students enrolled
+    #  in a course. No parameter and no return value
+
+    #  def display_roster(self):
+        #  print("Enter course you want to see the roster of: ")
+        #  new_roster = []
+        #  c = 0
+        #  for id in self._roster:
+        #      new_roster.append(id)
+        #      c += 1
+        #  print(new_roster, c)
+
     #  get_course_code returns the value of self._course_code
 
     def get_course_code(self):
